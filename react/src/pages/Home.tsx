@@ -3,13 +3,15 @@ import { axiosInstance } from "../lib/axios";
 import { useEffect, useState } from "react";
 import { IProduct } from "../lib/type";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import DocumentGenerate from "../components/document/DocumentGenerate";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [products, productsSet] = useState<IProduct[]>([]);
   const [filteredProducts, filteredProductsSet] = useState<IProduct[]>([]); // State untuk hasil pencarian
   const [isLoading, isLoadingSet] = useState<boolean>(false);
   const [isError, isErrorSet] = useState<boolean>(false);
+
+  const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value.toLowerCase();
@@ -22,8 +24,8 @@ const Home = () => {
   };
 
   const handleGenerate = () => {
-    console.log(filteredProducts);
-  };
+    navigate("/preview")
+   };
 
   const fetchProduct = async () => {
     isLoadingSet(true);
@@ -53,8 +55,6 @@ const Home = () => {
           <p className="text-center text-3xl text-white">logo</p>
         </div>
       </div>
-
-     <DocumentGenerate />
 
       {/* title */}
       <h1 className="text-center font-bold text-2xl">Chart Generator</h1>
