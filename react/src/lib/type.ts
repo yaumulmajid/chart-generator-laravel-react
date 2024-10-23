@@ -1,6 +1,8 @@
 export interface IProduct {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
+  id: number,
+  product_name: string,
+  product_image: string,
+  is_active: boolean,
+  created_at: string,
+  updated_at: string
 }
