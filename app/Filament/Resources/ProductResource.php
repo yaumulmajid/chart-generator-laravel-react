@@ -32,9 +32,6 @@ class ProductResource extends Resource
                 TextInput::make('product_name')->required(),
                 FileUpload::make('product_image')
                 ->required()
-                ->required()
-                ->disk('public')
-                ->directory('images')
                 ->preserveFilenames(),
                 Toggle::make('is_active')
                 ->default(true)
